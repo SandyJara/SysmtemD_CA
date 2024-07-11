@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "grpc.ca.sandraLibrary";
+option java_outer_classname = "SmartLibrarySandraImpl";
+
+package samplesandrajservice1;
+
+// Air Conditioning service definition.
+service AirConditioning {
+  // Bidirectional streaming RPC for control the temperature.
+  rpc controlTemperature(stream ControlRequest) returns (stream ControlResponse) {}
+}
+
+// Request message for controlling temperature.
+message ControlRequest {
+  int32 temperature = 1;
+}
+
+// Response message for temperature control.
+message ControlResponse {
+  string action = 1; // I will add with my conditions the option of: "Decreasing temperature", "Increasing temperature", or "Keeping temperature"
+}
